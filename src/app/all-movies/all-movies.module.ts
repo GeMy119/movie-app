@@ -15,6 +15,10 @@ import { CharLimitPipe } from './pipes/chart-limit.pipe';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import '@angular/localize/init';
+import { TvComponent } from './tv/tv.component';
+import { MovieComponent } from './movie/movie.component';
+import { PeopleComponent } from './people/people.component';
+import { ActorDetailsComponent } from './actor-details/actor-details.component';
 
 
 
@@ -28,6 +32,10 @@ import '@angular/localize/init';
     SearchComponent,
     RecommendationComponent,
     CharLimitPipe,
+    TvComponent,
+    MovieComponent,
+    PeopleComponent,
+    ActorDetailsComponent,
 
   ],
   providers:[NgbRatingConfig],
@@ -59,7 +67,11 @@ import '@angular/localize/init';
     MovieHomeComponent,
     FavMoviesComponent,
     SearchComponent,
-    RecommendationComponent
+    RecommendationComponent,
+    TvComponent,
+    MovieComponent,
+    PeopleComponent,
+    ActorDetailsComponent
   ]
 })
 export class AllMoviesModule { }

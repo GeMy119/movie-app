@@ -1,13 +1,11 @@
-.pointer{
+.pointer {
     cursor: pointer;
     font-size: 25px;
 }
-.card-progress
-{
+
+.card-progress {
     position: absolute;
-    top:90%;
+    top: 90%;
     left: 5%;
 }
-  
-  
-  
+

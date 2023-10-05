@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Movie } from '../interface/movie';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +11,14 @@ export class HomeService {
     this.ayHaga = new BehaviorSubject({})
   }
 
-  getPopularMonies(): Observable<any> {
-    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4`)
+  getMovies(key:string ,page:number): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/trending/${key}/week?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&page=${page}`)
   }
-  getMoviesPagination(page: number): Observable<any> {
-    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&page=${page}`)
+  getActors(): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/trending/person/week?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4`)
+  }
+  getTopRatedMovies(page:number): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&page=${page}`)
   }
   getOneMovie(id: number): Observable<any> {
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4`)
@@ -25,11 +26,14 @@ export class HomeService {
   getRecommendations(id: number ,page:number): Observable<any> {
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&page=${page}`)
   }
-  searchMovies(searchVal: string) {
-    return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&query=${searchVal}`)
-  }
-  serchMoviePaginatio(searchVal: string, page: number) {
+  serchMovies(searchVal: string, page: number) {
     return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4&page=${page}&query=${searchVal}`)
+  }
+  getActorMovies(id: number, startIndex: number, endIndex: number) {
+    return this.http.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4`)
+  }
+  getActorDetais(id: number) {
+    return this.http.get(`https://api.themoviedb.org/3/person/${id}?api_key=eba8b9a7199efdcb0ca1f96879b83c44&fbclid=IwAR0NyLxRd7CsJUETmb0bfKibGO5Sy0JNx8HNLu9miaEPxNhokJgF7MtyAg4`)
   }
   getAyHaga() {
     return this.ayHaga.asObservable()

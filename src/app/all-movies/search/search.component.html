@@ -14,7 +14,7 @@
             <h5>{{searchVal}}</h5>
         </div>
     </div>
-    <div class="row" *ngIf="searchResult">
+    <div class="row justify-content-center" *ngIf="searchResult">
         <div class="col-md-2" *ngFor="let movie of searchResult.results ;">
             <div class="position-relative">
                 <img [src]="(movie.poster_path == null) ? ('../../../assets/img.jpg') : (imagePass + movie.poster_path)" class=" card-img-top w-100 pointer"
@@ -39,15 +39,7 @@
             </div>
         </div>
     </div>
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-            <li (click)="getMoviesPagination(searchVal, page)" class="page-item actice pointer"
-                *ngFor="let page of pagesNum" [ngStyle]="{'color': page === currentPage ? 'black' : ''}"><a
-                    class="page-link">{{page}}</a>
-            </li>
-        </ul>
-    </nav>
-    <div *ngIf="searchResult" class="d-flex justify-content-center">
+    <div *ngIf="searchResult" class="d-flex justify-content-center my-5">
         <ngb-pagination [(page)]="currentPage" [maxSize]="5" [collectionSize]="allPages*10"
             (pageChange)="getMoviesPagination(searchVal,currentPage)" [boundaryLinks]="true"
             [rotate]="true"></ngb-pagination>

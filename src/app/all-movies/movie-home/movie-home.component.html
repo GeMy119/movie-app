@@ -15,22 +15,11 @@
         </div>
     </div>
 
-    <div class="" *ngIf="!allMovies">
+    <div class="" *ngIf="!trendingMovie && !trendingTv && !trendingPeople && !topRatedMovies ">
         <h1 class="text-center">Loading....</h1>
     </div>
-    <div class="container" *ngIf="allMovies">
-        <h2 class="my-2">Popular Movies</h2>
-        <app-movie-card [allMovies]="allMovies"></app-movie-card>
+    <div class="container" *ngIf="trendingMovie && trendingTv && trendingPeople">
+        <app-movie-card [trendingMovie]="trendingMovie" [trendingTv]="trendingTv"
+            [trendingPeople]="trendingPeople" [topRatedMovies]="topRatedMovies"></app-movie-card>
     </div>
-    <div *ngIf="allMovies" class="d-flex justify-content-center pb-5 mt-3">
-        <ngb-pagination
-        [(page)]="currentPage"
-        [maxSize]="5"
-        [collectionSize]="5000"
-        (pageChange)="getMoviesPagination(currentPage)"
-        [boundaryLinks]="true"
-        [rotate]="true" 
-      ></ngb-pagination>
-    </div>
-   
 </section>

@@ -5,9 +5,9 @@ import { OriginalMovie } from '../interface/originalMovie';
   providedIn: 'root'
 })
 export class FavService {
-  private watchList: { movie: OriginalMovie, added: boolean }[] = []
+  private watchList: { movie: any, added: boolean }[] = []
   constructor() { }
-  addToWatchList(movie: OriginalMovie) {
+  addToWatchList(movie: any) {
     const movieExist = this.watchList.find((item) => item.movie.id === movie.id)
     if (!movieExist) {
       this.watchList.push({ movie: movie, added: true })
@@ -20,7 +20,7 @@ export class FavService {
   getWatchList() {
     return this.watchList
   }
-  removeFromList(movie: OriginalMovie) {
+  removeFromList(movie: any) {
     const index = this.watchList.findIndex((item) => item.movie.id === movie.id)
     if (index!=-1) {
       this.watchList.splice(index, 1)

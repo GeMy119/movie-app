@@ -1,7 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 @media only screen and (min-width: 768px) {
-    .card-progress{
+    .card-progress {
         top: 100%;
         left: 0;
     }
+}
+
+:root {
+    --bg-light: #24baef;
+    --bg-dark: #131722;
+    --border-color: #a8a8a83d;
+    --second-font-color: #8b94a9;
+    --nav-link-color: hwb(222 2% 72%);
+}
+
+.socend-font-color {
+    color: var(--second-font-color);
+}
+
+.brdr {
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.card-progress {
+    position: absolute;
+    top: 90%;
+    left: 5%;
+}
+
+.pointer {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.page-link {
+    cursor: pointer;
+}
+.nav-link-color{
+    color: var(--nav-link-color);
 }

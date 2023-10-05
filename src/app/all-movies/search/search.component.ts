@@ -26,8 +26,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchVal = this.active.snapshot.params["searchVal"]
-    this._HomeService.searchMovies(this.searchVal).subscribe({ next: (movie: any) => this.searchResult = movie })
-    this.sub = this._HomeService.serchMoviePaginatio(this.searchVal, 1).subscribe({
+    this.sub = this._HomeService.serchMovies(this.searchVal, 1).subscribe({
       next: (data: any) => {
         this.searchResult = data;
         this.allPages = data.total_pages
@@ -44,11 +43,10 @@ export class SearchComponent implements OnInit {
     this._HomeService.setAyHaga(id)
   }
   searchMovie() {
-    this._HomeService.searchMovies(this.searchVal).subscribe({ next: (movie: any) => this.searchResult = movie })
     this.getMoviesPagination(this.searchVal,this.currentPage)
   }
   getMoviesPagination(searchVal: string, page: number) {
-    this.sub = this._HomeService.serchMoviePaginatio(searchVal, this.currentPage).subscribe({
+    this.sub = this._HomeService.serchMovies(searchVal, this.currentPage).subscribe({
       next: (data: any) => {
         this.searchResult = data;
         this.allPages = data.total_pages

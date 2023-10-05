@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../interface/movie';
 import { Router } from '@angular/router';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { HomeService } from '../services/home.service';
@@ -11,13 +10,20 @@ import { FavService } from '../services/fav.service';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() allMovies!: Movie;
+  @Input() trendingMovie!: OriginalMovie[];
+  @Input() trendingTv!: any[];
+  @Input() trendingPeople!: any[];
+  @Input() topRatedMovies!: OriginalMovie[];
   faHeart = faHeart
   watchList: { movie: OriginalMovie, added: boolean }[] = []
   imagePass: string = 'https://image.tmdb.org/t/p/w500'
   constructor(private router: Router, private _HomeService: HomeService, private _FavService: FavService) { }
   ngOnInit(): void {
     this.watchList = this._FavService.getWatchList()
+  }
+  
+  redirectToActorDetails(id: number) {
+    this.router.navigate(["actorDetails", id])
   }
   redirectToDetails(id: number) {
     this.router.navigate(["movieDetails", id])

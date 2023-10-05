@@ -1,0 +1,39 @@
+<div class="container my-5">
+    <div class="text-center" *ngIf="!actorData">
+        <h2 class="h1">
+            loading.....
+        </h2>
+    </div>
+    <div class="row justify-content-center" *ngIf="actorData">
+        <div class="col-md-2" *ngFor="let person of actorData ;">
+            <div class="movie-cart my-3 " *ngIf="person">
+                <div class="position-relative">
+                    <img [src]="(person.profile_path == null) ? ('../../../assets/img.jpg') : (imagePass + person.profile_path)"
+                        class=" card-img-top w-100 pointer" (click)="redirectToActorDetails(person.id)" alt="...">
+                    <!-- (click)="redirectToActorDetails(person.id)" -->
+                    <!-- <circle-progress [percent]="(person.vote_average/10)*100" class="card-progress" [showTitle]="true"
+                    [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15" [titleFontSize]="'10'"
+                    [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0" [innerStrokeColor]="'#000'"
+                    [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300">
+                </circle-progress> -->
+                </div>
+
+                <div class="card-body d-flex justify-content-between">
+                    <div class="mt-2">
+                        <h3 class="card-title h6">{{person.name}}</h3>
+                        <!-- <p class="card-text">{{person.release_date}}</p> -->
+                    </div>
+                    <!-- <div class="icon mt-2 pointer" [ngStyle]="{'color':isMovieInWatchList(person)? '#ffe353':'black'}"
+                    (click)="addToWatchList(person)">
+                    <fa-icon class="pointer" [icon]="faHeart"></fa-icon>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="actorData" class="d-flex justify-content-center mt-5">
+        <ngb-pagination [(page)]="currentPage" [maxSize]="5" [collectionSize]="5000"
+            (pageChange)="getMoviesPagination(key,currentPage)" [boundaryLinks]="true" [rotate]="true"></ngb-pagination>
+    </div>
+</div>

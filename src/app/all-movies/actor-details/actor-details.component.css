@@ -1,0 +1,9 @@
+.see-more{
+    padding: 10px 0px;
+    background-color: rgb(2, 2, 58);
+    width: 100%;
+    border-radius: 10px;
+}
+.see-more a{
+    color: #fff;
+}

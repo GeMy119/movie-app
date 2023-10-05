@@ -5,6 +5,10 @@ import { MovieDetailsComponent } from './all-movies/movie-details/movie-details.
 import { MovieHomeComponent } from './all-movies/movie-home/movie-home.component';
 import { FavMoviesComponent } from './all-movies/fav-movies/fav-movies.component';
 import { SearchComponent } from './all-movies/search/search.component';
+import { TvComponent } from './all-movies/tv/tv.component';
+import { MovieComponent } from './all-movies/movie/movie.component';
+import { PeopleComponent } from './all-movies/people/people.component';
+import { ActorDetailsComponent } from './all-movies/actor-details/actor-details.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -12,6 +16,10 @@ const routes: Routes = [
   { path: "movieDetails/:id", component: MovieDetailsComponent },
   { path: "search/:searchVal", component: SearchComponent },
   { path: "favMovies", component: FavMoviesComponent },
+  { path: "tv", component: TvComponent },
+  { path: "movie", component: MovieComponent },
+  { path: "actors", component: PeopleComponent },
+  { path: "actorDetails/:id", component: ActorDetailsComponent },
   { path: "**", component: NotfoundComponent }
 ];
 

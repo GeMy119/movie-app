@@ -1,27 +1,140 @@
 <div class="row">
-    <div class="col-md-2" *ngFor="let movie of allMovies.results ;">
+    <div class="col-md-4 d-flex align-items-center">
+        <div>
+            <div class="brdr w-25 mb-4"></div>
+            <h2>Popular <br> Movies <br> To Watch Right Now</h2>
+            <p class="text-muted socend-font-color">Popular Movies In web</p>
+            <div class="brdr w-100 mt-4"></div>
+        </div>
+    </div>
+    <div class="col-md-2" *ngFor="let movie of trendingMovie ;">
         <div class="movie-cart my-3 " *ngIf="movie">
             <div class="position-relative">
-                <img [src]="(movie.poster_path == null) ? ('../../../assets/img.jpg') : (imagePass + movie.poster_path)" class=" card-img-top w-100 pointer"
-                    (click)="redirectToDetails(movie.id)" alt="...">
-                <circle-progress [percent]="(movie.vote_average/10)*100" class="card-progress"
-                    [showTitle]="true" [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15"
-                    [titleFontSize]="'10'" [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0"
-                    [innerStrokeColor]="'#000'" [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'"
-                    [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
-                    [animationDuration]="300">
+                <img [src]="(movie.poster_path == null) ? ('../../../assets/img.jpg') : (imagePass + movie.poster_path)"
+                    class=" card-img-top w-100 pointer" (click)="redirectToDetails(movie.id)" alt="...">
+                <circle-progress [percent]="(movie.vote_average/10)*100" class="card-progress" [showTitle]="true"
+                    [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15" [titleFontSize]="'10'"
+                    [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0" [innerStrokeColor]="'#000'"
+                    [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300">
                 </circle-progress>
             </div>
 
             <div class="card-body d-flex justify-content-between m-2">
                 <div class="mt-2">
-                    <h6 class="card-title">{{movie.title}}</h6>
+                    <h3 class="card-title h6">{{movie.title}}</h3>
                     <p class="card-text">{{movie.release_date}}</p>
                 </div>
                 <div class="icon mt-3 pointer" [ngStyle]="{'color':isMovieInWatchList(movie)? '#ffe353':'black'}"
                     (click)="addToWatchList(movie)">
                     <fa-icon class="pointer" [icon]="faHeart"></fa-icon>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col-md-4 d-flex align-items-center">
+        <div>
+            <div class="brdr w-25 mb-4"></div>
+            <h2>Top Rated <br> Movies <br> To Watch Right Now</h2>
+            <p class="text-muted socend-font-color">Top Rated Movies In web</p>
+            <div class="brdr w-100 mt-4"></div>
+        </div>
+    </div>
+    <div class="col-md-2" *ngFor="let movie of topRatedMovies ;">
+        <div class="movie-cart my-3 " *ngIf="movie">
+            <div class="position-relative">
+                <img [src]="(movie.poster_path == null) ? ('../../../assets/img.jpg') : (imagePass + movie.poster_path)"
+                    class=" card-img-top w-100 pointer" (click)="redirectToDetails(movie.id)" alt="...">
+                <circle-progress [percent]="(movie.vote_average/10)*100" class="card-progress" [showTitle]="true"
+                    [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15" [titleFontSize]="'10'"
+                    [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0" [innerStrokeColor]="'#000'"
+                    [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300">
+                </circle-progress>
+            </div>
+
+            <div class="card-body d-flex justify-content-between m-2">
+                <div class="mt-2">
+                    <h3 class="card-title h6">{{movie.title}}</h3>
+                    <p class="card-text">{{movie.release_date}}</p>
+                </div>
+                <div class="icon mt-3 pointer" [ngStyle]="{'color':isMovieInWatchList(movie)? '#ffe353':'black'}"
+                    (click)="addToWatchList(movie)">
+                    <fa-icon class="pointer" [icon]="faHeart"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col-md-4 d-flex align-items-center">
+        <div>
+            <div class="brdr w-25 mb-4"></div>
+            <h2>Popular <br> Tv <br> To Watch Right Now</h2>
+            <p class="text-muted socend-font-color">Popular Tv In web</p>
+            <div class="brdr w-100 mt-4"></div>
+        </div>
+    </div>
+    <div class="col-md-2" *ngFor="let tv of trendingTv ;">
+        <div class="movie-cart my-3 " *ngIf="tv">
+            <div class="position-relative">
+                <img [src]="(tv.poster_path == null) ? ('../../../assets/img.jpg') : (imagePass + tv.poster_path)"
+                    class=" card-img-top w-100 pointer" (click)="redirectToDetails(tv.id)" alt="...">
+                <circle-progress [percent]="(tv.vote_average/10)*100" class="card-progress" [showTitle]="true"
+                    [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15" [titleFontSize]="'10'"
+                    [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0" [innerStrokeColor]="'#000'"
+                    [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300">
+                </circle-progress>
+            </div>
+
+            <div class="card-body d-flex justify-content-between m-2">
+                <div class="mt-2">
+                    <h3 class="card-title h6">{{tv.original_name}}</h3>
+                    <p class="card-text">{{tv.first_air_date}}</p>
+                </div>
+                <div class="icon mt-3 pointer" [ngStyle]="{'color':isMovieInWatchList(tv)? '#ffe353':'black'}"
+                    (click)="addToWatchList(tv)">
+                    <fa-icon class="pointer" [icon]="faHeart"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col-md-4 d-flex align-items-center">
+        <div>
+            <div class="brdr w-25 mb-4"></div>
+            <h2>Popular <br> People <br> To Watch Right Now</h2>
+            <p class="text-muted socend-font-color">Popular People In web</p>
+            <div class="brdr w-100 mt-4"></div>
+        </div>
+    </div>
+    <div class="col-md-2" *ngFor="let person of trendingPeople ;">
+        <div class="movie-cart my-3 " *ngIf="person">
+            <div class="position-relative">
+                <img [src]="(person.profile_path == null) ? ('../../../assets/img.jpg') : (imagePass + person.profile_path)"
+                    class=" card-img-top w-100 pointer" (click)="redirectToActorDetails(person.id)" alt="...">
+                
+                <!-- <circle-progress [percent]="(person.vote_average/10)*100" class="card-progress" [showTitle]="true"
+                    [backgroundPadding]="2" [unitsFontSize]="'10'" [radius]="15" [titleFontSize]="'10'"
+                    [titleFontWeight]="'50'" [outerStrokeWidth]="4" [innerStrokeWidth]="0" [innerStrokeColor]="'#000'"
+                    [titleColor]="'#ffffff'" subtitle="" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#78C000'"
+                    [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300">
+                </circle-progress> -->
+            </div>
+
+            <div class="card-body d-flex justify-content-between">
+                <div class="mt-2">
+                    <h3 class="card-title h6">{{person.name}}</h3>
+                    <!-- <p class="card-text">{{person.release_date}}</p> -->
+                </div>
+                <!-- <div class="icon mt-2 pointer" [ngStyle]="{'color':isMovieInWatchList(person)? '#ffe353':'black'}"
+                    (click)="addToWatchList(person)">
+                    <fa-icon class="pointer" [icon]="faHeart"></fa-icon>
+                </div> -->
             </div>
         </div>
     </div>
